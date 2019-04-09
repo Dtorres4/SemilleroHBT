@@ -1,0 +1,190 @@
+<input value="{{buttonName}}" type="button" (click)="mostrarFormulario()" />
+<input value="{{buttonTab}}" type="button" (click)="mostrarTabla()" />
+<br>
+<br>
+<ng-container *ngIf="mostrarForm">
+    <form>
+        <section>
+            <label for="tidoid">Tipo de Identificación</label>
+            <select name="tipoid" [(ngModel)]="persona.tipoIdentificacion" form="">
+                <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
+                <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+            </select>
+            <label for="id">Número de Identificación</label>
+            <input name="id" type="text" [(ngModel)]="persona.numeroIdentificacion"
+                placeholder="Número de Identificación"
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+        </section>
+        <br>
+        <section>
+            <label for="name">Nombres</label>
+            <input name="name" type="text" [(ngModel)]="persona.nombre" placeholder="Nombre persona" />
+            <label for="apellido">Apellidos</label>
+            <input name="apellido" type="text" [(ngModel)]="persona.apellido" placeholder="Apellido persona" />
+        </section>
+        <br>
+        <section>
+            <label><input type="radio" name="sexo" value="H" [(ngModel)]="persona.sexo"> Hombre</label>
+
+            <label><input type="radio" name="sexo" value="M" [(ngModel)]="persona.sexo"> Mujer</label>
+        </section>
+        <br>
+        <section>
+            <label for="mayorEdad">Mayor de Edad</label>
+            <input type="checkbox" name="mayorEdad" id="mayor" value=true [(ngModel)]="persona.mayorEdad">
+        </section>
+        <br>
+        <section>
+            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+            <input name="fechaNacimiento" type="date" [(ngModel)]="persona.fechaNacimiento">
+        </section>
+        <br>
+        <section>
+            <label for="numtel">Número Teléfono</label>
+            <input name="numtel" type="text" [(ngModel)]="persona.numeroTelefono" placeholder="Numero de Telefono"
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+            <label for="edad">Edad</label>
+            <input name="edad" type="text" [(ngModel)]="persona.edad" placeholder="Edad"
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+        </section>
+        <br>
+        <section>
+            <label for="estado">Estado</label>
+            <select name="estado" [(ngModel)]="persona.estado" form="">
+                <option value="Activo">Ativo</option>
+                <option value="Nulo">Nulo</option>
+            </select>
+        </section>
+        <br>
+        <section>
+            <label for="roles">Roles</label>
+            <section>
+                <label><input type="radio" name="sexo" value="Comprador" [(ngModel)]="persona.roles"> Comprador</label>
+                <label><input type="radio" name="sexo" value="Vendedor" [(ngModel)]="persona.roles"> Vendedor</label>
+            </section>
+        </section>
+        <br>
+        <input value="Guardar" type="submit" (click)="guardar(per)">
+    </form>
+</ng-container>
+
+
+
+<ng-container *ngIf="actualizarPersona">
+    <form>
+        <section>
+            <label for="tidoid">Tipo de Identificación</label>
+            <select name="tipoid" [(ngModel)]="persona2.tipoIdentificacion" form="">
+                <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
+                <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+            </select>
+            <label for="id">Número de Identificación</label>
+            <input name="id" type="text" [(ngModel)]="persona2.numeroIdentificacion"
+                placeholder="Número de Identificación"
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+        </section>
+        <br>
+        <section>
+            <label for="name">Nombres</label>
+            <input name="name" type="text" [(ngModel)]="persona2.nombre" placeholder="Nombre persona" />
+            <label for="apellido">Apellidos</label>
+            <input name="apellido" type="text" [(ngModel)]="persona2.apellido" placeholder="Apellido persona" />
+        </section>
+        <br>
+        <section>
+            <label><input type="radio" name="sexo" value="H" [(ngModel)]="persona2.sexo"> Hombre</label>
+
+            <label><input type="radio" name="sexo" value="M" [(ngModel)]="persona2.sexo"> Mujer</label>
+        </section>
+        <br>
+        <section>
+            <label for="mayorEdad">Mayor de Edad</label>
+            <input type="checkbox" name="mayorEdad" id="mayor" [(ngModel)]="persona2.mayorEdad"  value={{persona2.mayorEdad}} >        
+        </section>
+        <br>
+        <section>
+            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+            <input name="fechaNacimiento" type="date" value={{persona2.fechaNacimiento}} [(ngModel)]="persona2.fechaNacimiento">
+        </section>
+        <br>
+        <section>
+            <label for="numtel">Número Teléfono</label>
+            <input name="numtel" type="text" [(ngModel)]="persona2.numeroTelefono" placeholder="Numero de Telefono"
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+            <label for="edad">Edad</label>
+            <input name="edad" type="text" [(ngModel)]="persona2.edad" placeholder="Edad"
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+        </section>
+        <br>
+        <section>
+            <label for="estado">Estado</label>
+            <select name="estado" [(ngModel)]="persona2.estado" form="">
+                <option value="Activo">Ativo</option>
+                <option value="Nulo">Nulo</option>
+            </select>
+        </section>
+        <br>
+        <section>
+            <label for="roles">Roles</label>
+            <section>
+                <label><input type="radio" name="sexo" value="Comprador" [(ngModel)]="persona2.roles"> Comprador</label>
+                <label><input type="radio" name="sexo" value="Vendedor" [(ngModel)]="persona2.roles"> Vendedor</label>
+            </section>
+        </section>
+        <br>
+        <input value="Actualizar" type="submit" (click)="actualizar()">
+    </form>
+</ng-container>
+
+
+
+<ng-container *ngIf="mostrarTab">
+    <form>
+        <section>
+            <label for="tidoident">Tipo de Identificación</label>
+            <select name="tipoident" form="">
+                <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
+                <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+            </select>
+            <label for="ident">Número de Identificación</label>
+            <input name="ident" type="text" placeholder="Número de Identificación"
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+        </section>
+        <br>
+        <input value="Buscar" type="submit" (click)="buscar(per)">
+    </form>
+    <br>
+    <table *ngIf="personas.length>0; else empty" border="1">
+        <caption>Personas</caption>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>N° Identificación</th>
+            <th>Tipo Identificación</th>
+            <th>Sexo</th>
+            <th>Mayor de Edad</th>
+            <th>Fecha de Nacimiento</th>
+            <th>N° Telefónico</th>
+            <th>Edad</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let per of personas">
+            <td>{{per.nombre || lowercase}}</td>
+            <td>{{per.apellido || lowercase}}</td>
+            <td>{{per.numeroIdentificacion || lowercase}}</td>
+            <td>{{per.tipoIdentificacion || lowercase}}</td>
+            <td>{{per.sexo || lowercase}}</td>
+            <td *ngIf="per.mayorEdad">Si</td>
+            <td *ngIf="!per.mayorEdad">No</td>
+            <td>{{per.fechaNacimiento || lowercase}}</td>
+            <td>{{per.numeroTelefono|| lowercase}}</td>
+            <td>{{per.edad || lowercase}}</td>
+            <td>{{per.estado || lowercase}}</td>
+            <td>
+                <input value="Borrar" type="button" (click)="borrar(per)">
+                <input value="Editar" type="button" (click)="editar(per)">
+            </td>
+        </tr>
+    </table>
+</ng-container>
