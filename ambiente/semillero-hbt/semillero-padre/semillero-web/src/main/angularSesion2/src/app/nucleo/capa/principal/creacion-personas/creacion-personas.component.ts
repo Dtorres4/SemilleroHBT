@@ -62,18 +62,27 @@ export class CreacionPersonasComponent implements OnInit {
 
 	}
 
-
+	/**
+   	 * 
+     * El metodo recibe como parametro una persona y la elimina del arreglo
+     */
 	private borrar(per: PersonaDTO) {
 		this.personas.splice(this.personas.indexOf(per), 1);
 	}
 
+
+	/**
+     * Este metodo recibe como parametro la persona que se va a modificar y la guarda en un objeto persona2 de tipo persona
+     * y desde el formulario se trabaja con persona2 para modificar sus valores
+     * se almacena su posicion en el arreglo en el metodo update para realizar la modificacion
+     */
 	public editar(per:PersonaDTO){
     this.mostrarForm=false;
     this.actualizarPersona=true;
     this.posActualizar=this.personas.indexOf(per);
     this.persona2=this.personas[this.posActualizar];
     
-  }
+  	}
   
   public Actualizar(){
     this.personas[this.posActualizar]=this.persona2;
