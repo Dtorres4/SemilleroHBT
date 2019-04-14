@@ -1,0 +1,52 @@
+<form>
+	<h2>
+	  {{ marca }}
+	</h2>
+	<h3> Componente hijo / Presentacion</h3>
+	<div class="card">
+	  <div class="section">
+	    {{ placa }}
+	  </div>
+	</div>
+	
+	<h2>Llamado servicios</h2>
+	<input value="Consultar personas" type="submit" (click)="consultarPersonas()" />
+	<pre>{{ listaPersonasDTO | json }}</pre>
+</form>
+
+    <form>
+        <section>
+            <label for="marca">Marcas</label>
+            <select name="marca" form="">
+                <option value="Cedula de Ciudadania">1</option>
+                <option value="Tarjeta de Identidad">2</option>
+            </select>
+            <label for="linea">Lineas</label>
+            <select name="linea" form="">
+                <option value="1">1</option>
+                <option value="1">2</option>
+            </select>
+            
+        </section>
+        <br>
+        <input value="Buscar" type="submit" (click)="buscar(per)">
+    </form>
+    <br>
+    <table *ngIf="vehiculos.length>0; else empty" border="1">
+        <caption>Personas</caption>
+        <tr>
+            <th>Linea</th>
+            <th>Placa</th>
+            <th>Modelo</th>            
+            <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let veh of vehiculos">
+            <td>{{veh.idLinea || lowercase}}</td>
+            <td>{{veh.placa || lowercase}}</td>
+            <td>{{veh.modelo || lowercase}}</td>            
+            <td>
+                <input value="Borrar" type="button" (click)="borrar(per)">
+                <input value="Editar" type="button" (click)="editar(per)">
+            </td>
+        </tr>
+    </table>
